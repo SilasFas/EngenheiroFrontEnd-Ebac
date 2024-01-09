@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário HTML</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="container">
+        <main>
+            <section id="input">
+                <form>
+                    <h2>Insira os números solicitados</h2>
+                    <span>
+                        <label for="numberA">Insira o número A: </label>
+                        <input type="number" name="numberA" id="numberA" placeholder="campo A">
+                        <label for="numberB">Insira o número B: </label>
+                        <input type="number" name="numberB" id="numberB" placeholder="campo B">
+                    </span>
+                    <input type="submit" value="Enviar" id="inputBtn">
+                </form>
+            </section>
+            <section id="output">
+                <h2>Validação</h2>
+                <p id="mensagem">Mensagem de erro</p>
+            </section>
+        </main>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
