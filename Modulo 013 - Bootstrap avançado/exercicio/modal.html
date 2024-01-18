@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal</title>
+    <link rel="stylesheet" href="library/bootstrap.min.css">
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main>
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exemplo-modal">
+            Abrir modal
+        </button>
+        <div class="modal" id="exemplo-modal" data-bs-backdrop="static">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5>Título da modal</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur fugit doloribus commodi
+                            eum ut
+                            sit, eaque, nobis dolorum laborum laboriosam mollitia. Ipsam placeat numquam, sed
+                            accusantium
+                            vitae est at tempore.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <h5>Rodapé da modal</h5>
+
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+
+                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Confirmar</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="library/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const modalExemplo = new bootstrap.Modal('#exemplo-modal')
+            setTimeout(function () {
+                modalExemplo.show()
+            }, 3000)
+        })
+    </script>
+</body>
+
+</html>
