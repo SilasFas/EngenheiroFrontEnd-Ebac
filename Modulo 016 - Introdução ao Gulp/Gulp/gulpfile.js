@@ -1,22 +1,29 @@
-const gulp = require('gulp'); 
+const gulp = require('gulp');
 
 
 function funcaoPadrao(callback) {
-    console.log('Executando uma função');
-    callback();
+    setTimeout(() => {
+        console.log('Executando uma função');
+        callback();
+    }, 2000);
 }
 
 function dizOi(callback) {
-    console.log('Ola, Gulp!');
-    dizTchau();
-    callback();
+    setTimeout(() => {
+        console.log('Ola, Gulp!');
+        dizTchau();
+        callback();
+    }, 1000);
+
+
 }
 
 function dizTchau() {
     console.log('Tchau Gulp');
 }
 
-exports.default = gulp.series(funcaoPadrao, dizOi) ;
+//exports.default = gulp.series(funcaoPadrao, dizOi);
+exports.default = gulp.parallel(funcaoPadrao, dizOi);
 exports.dizOi = dizOi;
 
 // taredas públicas = aquelas que exportamos e conseguimos chamar via linha de camnado.
