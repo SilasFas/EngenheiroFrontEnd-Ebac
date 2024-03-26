@@ -31,3 +31,5 @@ exports.dizOi = dizOi;
 // função = tarefa
 
 // tarefas em série or série de tarefas = referem-se a uma sequência de tarefas que são executadas uma após a outra, em ordem definida. Isso é útil quando você tem várias tarefas que dependem do resultado de tarefas anteriores, ou quando você deseja garantir uma ordem específica de execução das tarefas.
+
+// tarefas em paralelo = referem a um conjunto de tarefas que podem ser executadas simultaneamente, sem depender do resultado de uma tarefa para iniciar outra. Isso é útil quando você tem tarefas que podem ser executadas de forma independente e não têm dependências entre si.
