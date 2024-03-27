@@ -1,30 +1,45 @@
 const gulp = require('gulp');
+const sass = require('gulp-sass')(require('sass'));
+const sourcemaps = require('gulp-sourcemaps')
 
-
-function funcaoPadrao(callback) {
-    setTimeout(() => {
-        console.log('Executando uma função');
-        callback();
-    }, 2000);
+function compilaSass() {
+    return gulp.src('./source/styles/main.scss') //pega os arquivos font (input)
+        .pipe(sourcemaps.init())
+        .pipe(sass({
+            outputstyles: 'compressed' // minifica o arquivo
+        })) // executa a compitação do sass
+        .pipe(sourcemaps.write('./maps')) // recebe pasta onde os arquivos de mapeamento estão disponíveis
+        .pipe(gulp.dest('./build/styles')); // enviar os arquivos compilados para uma pasta (output)
 }
 
-function dizOi(callback) {
-    setTimeout(() => {
-        console.log('Ola, Gulp!');
-        dizTchau();
-        callback();
-    }, 1000);
-
-
+exports.sass = compilaSass;
+exports.watch = function () {
+    gulp.watch('./source/styles/*.scss', { ignoreInitial: false }, gulp.series(compilaSass))
 }
 
-function dizTchau() {
-    console.log('Tchau Gulp');
-}
+// function funcaoPadrao(callback) {
+//     setTimeout(() => {
+//         console.log('Executando uma função');
+//         callback();
+//     }, 2000);
+// }
+
+// function dizOi(callback) {
+//     setTimeout(() => {
+//         console.log('Ola, Gulp!');
+//         dizTchau();
+//         callback();
+//     }, 1000);
+// }
+
+// function dizTchau() {
+//     console.log('Tchau Gulp');
+// }
 
 //exports.default = gulp.series(funcaoPadrao, dizOi);
-exports.default = gulp.parallel(funcaoPadrao, dizOi);
-exports.dizOi = dizOi;
+// exports.default = gulp.parallel(funcaoPadrao, dizOi);
+// exports.dizOi = dizOi;
+
 
 // taredas públicas = aquelas que exportamos e conseguimos chamar via linha de camnado.
 // taredas privadas = uma função js que será chamada por outra função/tarefa. Não vai usar o exports na tarefa privada. Não será acessivel na linha de comando
