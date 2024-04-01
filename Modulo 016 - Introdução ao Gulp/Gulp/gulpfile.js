@@ -1,6 +1,9 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 const sourcemaps = require('gulp-sourcemaps')
+const uglify = require('gulp-uglify');
+const obfuscate = require('gulp-obfuscate');
+const imagemin = require('gulp-imagemin');
 
 function compilaSass() {
     return gulp.src('./source/styles/main.scss') //pega os arquivos font (input)
@@ -12,10 +15,28 @@ function compilaSass() {
         .pipe(gulp.dest('./build/styles')); // enviar os arquivos compilados para uma pasta (output)
 }
 
-exports.sass = compilaSass;
-exports.watch = function () {
-    gulp.watch('./source/styles/*.scss', { ignoreInitial: false }, gulp.series(compilaSass))
+function comprimeJavaScript() {
+    return gulp.src('./source/scripts/*.js')
+        .pipe(uglify())
+        .pipe(obfuscate())
+        .pipe(gulp.dest('./build/scripts'))
 }
+
+function comprimeImagens() {
+    return gulp.src('./source/images/*')
+        .pipe(imagemin())
+        .pipe(gulp.dest('./build/images'))
+}
+
+exports.default = function () {
+    gulp.watch('./source/styles/*.scss', { ignoreInitial: false }, gulp.series(compilaSass))
+    gulp.watch('./source/scripts/*.js', { ignoreInitial: false }, gulp.series(comprimeJavaScript))
+    gulp.watch('./source/images/*', { ignoreInitial: false }, gulp.series(comprimeImagens))
+}
+
+// exports.images = comprimeImagengs;
+// exports.javascript = comprimeJS;
+// exports.sass = compilaSass;
 
 // function funcaoPadrao(callback) {
 //     setTimeout(() => {
