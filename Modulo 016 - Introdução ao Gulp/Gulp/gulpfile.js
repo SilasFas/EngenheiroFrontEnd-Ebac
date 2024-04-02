@@ -9,7 +9,7 @@ function compilaSass() {
     return gulp.src('./source/styles/main.scss') //pega os arquivos font (input)
         .pipe(sourcemaps.init())
         .pipe(sass({
-            outputstyles: 'compressed' // minifica o arquivo
+            outputStyles: 'compressed' // minifica o arquivo
         })) // executa a compitação do sass
         .pipe(sourcemaps.write('./maps')) // recebe pasta onde os arquivos de mapeamento estão disponíveis
         .pipe(gulp.dest('./build/styles')); // enviar os arquivos compilados para uma pasta (output)
