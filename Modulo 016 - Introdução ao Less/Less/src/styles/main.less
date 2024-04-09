@@ -2,6 +2,23 @@
 @breakpointMobile: ~"(max-width: 767px)";
 @breakpointTablet: ~"(min-width:768px) and (max-width: 1023px)";
 
+//Mixin
+.marginBottom8 {
+    margin-bottom: 8px;
+}
+
+//Mixin
+.FontSize14 {
+    font-size: 14px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
 body {
     background-color: @corDeFundo;
     color: @corDoTexto;
@@ -14,11 +31,38 @@ body {
 
     @media @breakpointMobile {
         max-width: 70%;
-        background-color: red;
     }
 
     @media @breakpointTablet {
         max-width: 80%;
-        background-color: yellow;
+    }
+}
+
+header {
+    padding: 24px;
+
+    .profile-avatar {
+        display: block;
+        margin: 0 auto 24px;
+        border-radius: 50%;
+    }
+}
+
+.profile-bio {
+    text-align: center;
+
+    &-name {
+        font-size: 16px;
+        .marginBottom8()
+    }
+
+    &-subtitle {
+        .FontSize14();
+        .marginBottom8()
+    }
+
+    &-description {
+        .FontSize14();
+        opacity: .7;
     }
 }
