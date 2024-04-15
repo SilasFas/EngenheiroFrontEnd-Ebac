@@ -6,7 +6,7 @@ module.exports = function (grunt) {
         less: {
             development: {
                 files: {
-                    'man.css': 'main.less'
+                    'dev/styles/man.css': 'src/styles/main.less'
                 }
             },
             pruduction: {
@@ -14,39 +14,67 @@ module.exports = function (grunt) {
                     compress: true,
                 },
                 files: {
-                    'man.min.css': 'main.less'
+                    'dist/styles/man.min.css': 'src/styles/main.less'
                 }
             }
         },
-
-        sass: {
-            dist: {
-                options: {
-                    style: 'compressed'
-                },
-                files: {
-                    'main2.css': 'main.scss'
-                }
-            }
-        },
-
-        concurrent: {
-            target: ['Ola Grunt', 'less', 'sass']
-        }
-    })
-
-    grunt.registerTask('Ola Grunt', function () {
-        const done = this.async()
-        setTimeout(() => {
-            console.log('Ola Grunt')
-            done()
-        }, 3000);
     })
 
     grunt.loadNpmTasks('grunt-contrib-less')
-    grunt.loadNpmTasks('grunt-contrib-sass')
-    grunt.loadNpmTasks('grunt-concurrent')
 
-    grunt.registerTask('default', ['concurrent'])
+    grunt.registerTask('default', ['less:development'])
+    grunt.registerTask('build', ['less:pruduction'])
 }
 
+
+// module.exports = function (grunt) {
+//     grunt.initConfig({
+
+//         pkg: grunt.file.readJSON('package.json'),
+
+//         less: {
+//             development: {
+//                 files: {
+//                     'man.css': 'main.less'
+//                 }
+//             },
+//             pruduction: {
+//                 options: {
+//                     compress: true,
+//                 },
+//                 files: {
+//                     'man.min.css': 'main.less'
+//                 }
+//             }
+//         },
+
+//         sass: {
+//             dist: {
+//                 options: {
+//                     style: 'compressed'
+//                 },
+//                 files: {
+//                     'main2.css': 'main.scss'
+//                 }
+//             }
+//         },
+
+//         concurrent: {
+//             target: ['Ola Grunt', 'less', 'sass']
+//         }
+//     })
+
+//     grunt.registerTask('Ola Grunt', function () {
+//         const done = this.async()
+//         setTimeout(() => {
+//             console.log('Ola Grunt')
+//             done()
+//         }, 3000);
+//     })
+
+//     grunt.loadNpmTasks('grunt-contrib-less')
+//     grunt.loadNpmTasks('grunt-contrib-sass')
+//     grunt.loadNpmTasks('grunt-concurrent')
+
+//     grunt.registerTask('default', ['concurrent'])
+// }
